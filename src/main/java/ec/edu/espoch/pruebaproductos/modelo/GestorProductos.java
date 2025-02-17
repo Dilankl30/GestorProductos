@@ -22,9 +22,9 @@ public class GestorProductos {
         if (cont < productos.length) {
             productos[cont] = producto;
             cont++;
-            return "Producto agregado correctamente.";
+            return "Producto agregado correctamente.. ";
         } else {
-            return "No hay espacio para más productos.";
+            return "No hay espacio para más productos..";
         }
     }
 
