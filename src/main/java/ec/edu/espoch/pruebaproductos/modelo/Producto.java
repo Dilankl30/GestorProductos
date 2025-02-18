@@ -4,11 +4,8 @@
  */
 package ec.edu.espoch.pruebaproductos.modelo;
 
-/**
- *
- * @author mundo
- */
 public class Producto {
+
     private int id;
     private String nombre;
     private String precio;
@@ -21,7 +18,6 @@ public class Producto {
         this.disponible = disponible;
     }
 
-    // Getters y Setters
     public int getId() {
         return id;
     }
@@ -56,9 +52,10 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "ID: " + id + "\n" +
-               "Nombre: " + nombre + "\n" +
-               "Precio: " + precio + "\n" +
-               "Disponible: " + (disponible ? "Sí" : "No") + "\n\n";
+        return "ID: " + id + "\n"
+                + "Nombre: " + nombre
+                + " | Precio: " + precio + "\n"
+                + "Disponible: " + (disponible ? "Sí" : "No") + "\n\n\n";
     }
+
 }

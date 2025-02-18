@@ -15,14 +15,14 @@ public class Controlador {
 
     private Vista vista;
     private GestorProductos gestorProductos;
-    private Disponibles disponiblesFrame;
-    private NoDisponibles noDisponiblesFrame;
+    private Disponibles disponibles;
+    private NoDisponibles noDisponibles;
 
     public Controlador(Vista vista, GestorProductos gestorProductos) {
         this.vista = vista;
         this.gestorProductos = gestorProductos;
-        this.disponiblesFrame = new Disponibles();
-        this.noDisponiblesFrame = new NoDisponibles();
+        this.disponibles = new Disponibles();
+        this.noDisponibles = new NoDisponibles();
     }
 
     public void agregarProducto() {
@@ -30,7 +30,6 @@ public class Controlador {
         String nombre = vista.getNombre();
         String precio = vista.getPrecio();
         boolean disponible = vista.isDisponible();
-
         if (nombre.isEmpty() || precio.isEmpty()) {
             JOptionPane.showMessageDialog(vista, "Por favor complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -43,20 +42,20 @@ public class Controlador {
     }
 
     public void mostrarDisponibles() {
-        Producto[] disponibles = gestorProductos.getProductosDisponibles();
-        disponiblesFrame.mostrarProductos(disponibles);
-        disponiblesFrame.setVisible(true);
+        Producto[] disponiblesV = gestorProductos.getProductosDisponibles();
+        disponibles.mostrarProductos(disponiblesV);
+        disponibles.setVisible(true);
     }
 
     public void mostrarNoDisponibles() {
-        Producto[] noDisponibles = gestorProductos.getProductosNoDisponibles();
-        noDisponiblesFrame.mostrarProductos(noDisponibles);
-        noDisponiblesFrame.setVisible(true);
+        Producto[] noDisponiblesV = gestorProductos.getProductosNoDisponibles();
+        noDisponibles.mostrarProductos(noDisponiblesV);
+        noDisponibles.setVisible(true);
     }
 
     public void mostrarTodosLosProductos() {
         Producto[] todos = gestorProductos.getTodosLosProductos();
-        disponiblesFrame.mostrarProductos(todos); 
-        disponiblesFrame.setVisible(true);
+        disponibles.mostrarProductos(todos);
+        disponibles.setVisible(true);
     }
 }

@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ec.edu.espoch.pruebaproductos.modelo;
 
-/**
- *
- * @author mundo
- */
 public class GestorProductos {
 
     private Producto[] productos;
@@ -18,13 +10,17 @@ public class GestorProductos {
         this.cont = 0;
     }
 
+    private int idCounter = 1;
+
     public String agregarProducto(Producto producto) {
         if (cont < productos.length) {
+            producto.setId(idCounter);
             productos[cont] = producto;
             cont++;
-            return "Producto agregado correctamente.. ";
+            idCounter++;
+            return "Producto agregado correctamente con ID: " + producto.getId();
         } else {
-            return "No hay espacio para más productos..";
+            return "No hay espacio para más productos.";
         }
     }
 
@@ -36,10 +32,10 @@ public class GestorProductos {
             }
         }
         Producto[] disponibles = new Producto[count];
-        int index = 0;
+        int ide = 0;
         for (Producto producto : productos) {
             if (producto != null && producto.isDisponible()) {
-                disponibles[index++] = producto;
+                disponibles[ide++] = producto;
             }
         }
         return disponibles;
@@ -53,10 +49,10 @@ public class GestorProductos {
             }
         }
         Producto[] noDisponibles = new Producto[count];
-        int index = 0;
+        int ide = 0;
         for (Producto producto : productos) {
             if (producto != null && !producto.isDisponible()) {
-                noDisponibles[index++] = producto;
+                noDisponibles[ide++] = producto;
             }
         }
         return noDisponibles;
